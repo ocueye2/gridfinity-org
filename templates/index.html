@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search {
+            margin: 20px auto;
+        }
+
+        .search input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        table {
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        input,
+        select,
+        button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        button {
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="search">
+            <form method="post" action="search">
+                <input type="text" name="search" placeholder="Search..." required autofocus>
+            </form>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td style="padding: 20px;">
+                <h2>New Plate</h2>
+                <form method="post" action="create">
+                    <input type="hidden" name="type" value="plate">
+                    <input type="text" name="platename" placeholder="Plate Name" required>
+                    <p>x size:</p>
+                    <input type="number" name="xsize" placeholder="X" required>
+                    <p>y size:</p>
+                    <input type="number" name="ysize" placeholder="Y" required>
+                    <button type="submit">Submit</button>
+                </form>
+            </td>
+            <td style="padding: 20px;">
+                <h2>New Item</h2>
+                <form method="post" action="itemcreate">
+                    <input type="hidden" name="type" value="item">
+                    <input type="text" name="itemname" placeholder="Item Name" required>
+                    <select name="plate" required>
+                        {% for item in plates %}
+                        <option value="{{ item }}">{{ item }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>

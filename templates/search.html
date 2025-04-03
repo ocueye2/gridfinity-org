@@ -1,0 +1,63 @@
+<style>
+    iframe {
+        border: none;
+        width: 100%;
+        height: 450px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .search form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .search input {
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .grid-item {
+        background: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.436);
+    }
+</style>
+
+<div class="nav">
+    <div class="search">
+        <form method="post" action="search">
+            <input type="text" name="search" placeholder="Search..." required autofocus>
+            <a href="./">home</a>
+        </form>
+    </div>
+</div>
+
+<div class="grid-container">
+    {% for result in results %}
+    <div class="grid-item">
+        <iframe src="render?result={{ result }}"></iframe>
+    </div>
+    {% endfor %}
+</div>

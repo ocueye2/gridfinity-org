@@ -1,0 +1,63 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1,
+    h3 {
+        color: #333;
+    }
+
+    table {
+        margin: 20px auto;
+        border-spacing: 10px;
+        text-align: center;
+    }
+
+    .box {
+        height: 40px;
+        width: 40px;
+        border-radius: 8px;
+        background-color: #FF6347;
+        /* Tomato color */
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .box:hover {
+        transform: scale(1.2);
+        background-color: #FFB5B5;
+        /* Lighter tomato color */
+    }
+
+    .box:focus {
+        outline: none;
+    }
+
+    .box:active {
+        transform: scale(1);
+    }
+</style>
+
+<h1>Create Item</h1>
+<h3>Select the position of the item</h3>
+
+<table>
+    {% for x in range(xsize) %}
+    <tr>
+        {% for y in range(ysize) %}
+        <td>
+            <button class="box"
+                onclick="location.href='create?type=item&name={{name}}&x={{x}}&y={{y}}&plate={{plate}}'">
+                <!-- Optional: Icon or label inside the button if needed -->
+            </button>
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
